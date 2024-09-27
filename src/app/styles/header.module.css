@@ -1,0 +1,54 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: solid 1px black;
+  height: 2em;
+}
+
+.logo {
+  font-size: 25px;
+  margin-left: 20px;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav li {
+  margin-right: 20px;
+}
+
+.adicionar_chamado_button {
+  background-color: hsl(215, 90%, 47%);
+  border: none;
+  padding: 8px;
+  color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.adicionar_chamado_button:hover {
+  background-color: hsl(215, 90%, 30%);
+}
+
+.other_buttons {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.user_icon_set {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.username_icon {
+  margin-left: 10px;
+  font-size: 16px;
+}
