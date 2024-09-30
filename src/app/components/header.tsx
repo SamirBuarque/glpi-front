@@ -1,16 +1,30 @@
+"use client";
+
 import React from "react";
 import styles from "@/app/styles/header.module.css";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
+  const router = useRouter();
+
+  function handleNavigation(path: string) {
+    router.push(path);
+  }
+
   return (
     <header className={styles.header}>
       <div className="logo-header">
-        <h1 className={styles.logo}>IT Ticketing System</h1>
+        <h1 onClick={() => handleNavigation("/")} className={styles.logo}>
+          IT Ticketing System
+        </h1>
       </div>
       <nav className={styles.nav}>
         <ul>
           <li>
-            <button className={styles.adicionar_chamado_button}>
+            <button
+              className={styles.adicionar_chamado_button}
+              onClick={() => handleNavigation("/adicionarChamado")}
+            >
               Adicionar chamado
             </button>
           </li>
@@ -25,7 +39,10 @@ export default function Header() {
             </button>
           </li>
           <li>
-            <button className={styles.other_buttons}>
+            <button
+              className={styles.other_buttons}
+              onClick={() => handleNavigation("/ajustes")}
+            >
               <img
                 src="/images/settings.png"
                 alt="settings"
@@ -35,7 +52,10 @@ export default function Header() {
             </button>
           </li>
           <li className={styles.user_icon_set}>
-            <button className={styles.other_buttons}>
+            <button
+              className={styles.other_buttons}
+              onClick={() => handleNavigation("/usuario")}
+            >
               <img
                 src="/images/user.png"
                 alt="user profile"
