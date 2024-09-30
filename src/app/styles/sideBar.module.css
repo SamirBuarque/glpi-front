@@ -1,0 +1,45 @@
+.sidebar{
+    border-right: 1px solid black;
+    width: 300px;
+    height: 85vh;
+}
+
+.sidebar_title {
+    color: hsl(0, 0%, 40%);
+    margin: 20px;
+}
+
+.sidebar ul {
+    margin-left: 20px;
+    list-style: none;
+}
+
+.sidebar li {
+    margin: 10px;
+}
+
+.button {
+    background-color: #e9f2ff;
+    border: none;
+    padding: 8px;
+    color: black;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    width: 230px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .button:hover {
+    background-color: hsl(215, 100%, 80%);
+  }
+
+  .button span {
+    background-color: #DCE6F4;
+    width: 20px;
+    border-radius: 100%;
+    text-align: center;
+  }
