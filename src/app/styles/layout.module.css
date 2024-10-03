@@ -1,0 +1,11 @@
+.mainLayout {
+    display: flex;
+    flex-direction: row;
+}
+
+.mainContent {
+    flex-grow: 1;
+    margin: 20px;
+    min-height: 85vh;
+
+}
