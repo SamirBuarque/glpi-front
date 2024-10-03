@@ -1,9 +1,15 @@
 "use client";
 
+import React from "react";
 import styles from "@/app/styles/header.module.css";
 import { useRouter } from "next/navigation";
 
-export default function Header() {
+interface HeaderProps {
+  showModal: boolean;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header: React.FC<HeaderProps> = ({ showModal, setShowModal }) => {
   const router = useRouter();
 
   function handleNavigation(path: string) {
@@ -22,7 +28,9 @@ export default function Header() {
           <li>
             <button
               className={styles.adicionar_chamado_button}
-              onClick={() => handleNavigation("/adicionarChamado")}
+              onClick={() => {
+                console.log(showModal)
+                setShowModal(true)}}
             >
               Adicionar chamado
             </button>
@@ -68,4 +76,5 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+};
+export default Header;

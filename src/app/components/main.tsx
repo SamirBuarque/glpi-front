@@ -1,41 +1,41 @@
-import React from "react";
+"use client"
+
+import React, { useState, useEffect } from "react";
 import { ticketListProps } from "./ticketList";
 import TicketList from "./ticketList";
+import TicketModal from "./ticketModal";
+import { ticketProps } from "./ticket";
 
-const Main: React.FC = () => {
-  const lista: ticketListProps = {
-    tickets: [
-      {
-        id: 1,
-        title: "Chamado 1",
-        description: "Descrição do chamado 1",
-        status: "Em aberto",
-      },
-      {
-        id: 2,
-        title: "Chamado 2",
-        description: "Descrição do chamado 2",
-        status: "Fechado",
-      },
-      {
-        id: 3,
-        title: "Chamado 3",
-        description: "Descrição do chamado 3",
-        status: "Concluído",
-      },
-      {
-        id: 4,
-        title: "Chamado 4",
-        description: "Descrição do chamado 4",
-        status: "Concluído",
-      },
-    ],
+interface MainProps {
+  showModal: boolean;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Main: React.FC<MainProps> = ({showModal, setShowModal}) => {
+  const [tickets, setTickets] = useState<ticketProps[]>([]);
+
+  const handleAddTicket = (newTicket: ticketProps) => {
+    setTickets([...tickets, newTicket]);
   };
+
+  useEffect(() => {
+    console.log(`estado de showModal: ${showModal}`);
+
+    return () => {
+      console.log('Main component unmounted');
+    };
+  }, [showModal]);
 
   return (
     <div>
       <h1>Todos os chamados</h1>
-      <TicketList tickets={lista.tickets} />
+      {showModal ? (
+        <TicketModal
+        onClose={() => setShowModal(false)}
+        onSubmit={handleAddTicket}
+      />
+      ): null}
+      <TicketList tickets={tickets}/>
     </div>
   );
 };
