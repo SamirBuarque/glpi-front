@@ -1,6 +1,6 @@
 import React from "react";
-import Ticket from "./ticket";
-import { ticketProps } from "./ticket";
+import Ticket from "@/app/components/tickets/ticket";
+import { ticketProps } from "@/app/components/tickets/ticket";
 
 export interface ticketListProps {
   tickets: ticketProps[];

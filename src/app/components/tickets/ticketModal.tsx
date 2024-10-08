@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "@/app/styles/ticketModal.module.css";
-import { ticketProps } from "./ticket";
+import { ticketProps } from "./tickets/ticket";
 
 interface TicketModalProps {
   onClose: () => void;
