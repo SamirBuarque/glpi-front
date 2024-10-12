@@ -1,26 +1,22 @@
 "use client";
 
 import React from "react";
-import styles from "@/app/styles/header.module.css";
-import { useRouter } from "next/navigation";
+import styles from "@/app/styles/layout/header.module.css";
+import Link from "next/link";
 
 interface HeaderProps {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Header: React.FC<HeaderProps> = ({ showModal, setShowModal }) => {
-  const router = useRouter();
-
-  function handleNavigation(path: string) {
-    router.push(path);
-  }
-
+const Header = () => {
   return (
     <header className={styles.header}>
       <div className="logo-header">
-        <h1 onClick={() => handleNavigation("/")} className={styles.logo}>
-          IT Ticketing System
+        <h1>
+          <Link href={"/"} className={styles.logo}>
+            IT Ticketing System
+          </Link>
         </h1>
       </div>
       <nav className={styles.nav}>
@@ -29,8 +25,8 @@ const Header: React.FC<HeaderProps> = ({ showModal, setShowModal }) => {
             <button
               className={styles.adicionar_chamado_button}
               onClick={() => {
-                console.log(showModal)
-                setShowModal(true)}}
+                console.log("adicionar chamado");
+              }}
             >
               Adicionar chamado
             </button>
@@ -46,30 +42,24 @@ const Header: React.FC<HeaderProps> = ({ showModal, setShowModal }) => {
             </button>
           </li>
           <li>
-            <button
-              className={styles.other_buttons}
-              onClick={() => handleNavigation("/ajustes")}
-            >
-              <img
+            <Link href={'/settings'}>
+            <img
                 src="/images/settings.png"
                 alt="settings"
                 width={30}
                 height={30}
               />
-            </button>
+            </Link>
           </li>
           <li className={styles.user_icon_set}>
-            <button
-              className={styles.other_buttons}
-              onClick={() => handleNavigation("/usuario")}
-            >
-              <img
+            <Link href={'/user'}>
+            <img
                 src="/images/user.png"
                 alt="user profile"
                 width={30}
                 height={30}
               />
-            </button>
+            </Link>
             <span className={styles.username_icon}>Samir Buarque</span>
           </li>
         </ul>

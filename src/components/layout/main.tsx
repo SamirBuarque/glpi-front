@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useState, useEffect } from "react";
-import { ticketListProps } from "@/app/components/tickets/ticketList";
-import TicketList from "@/app/components/tickets/ticketList";
-import TicketModal from "@/app/components/tickets/ticketModal";
-import { ticketProps } from "@/app/components/tickets/ticket";
+import { ticketListProps } from "@/components/tickets/ticketList";
+import TicketList from "@/components/tickets/ticketList";
+import TicketModal from "@/components/tickets/ticketModal";
+import { ticketProps } from "@/components/tickets/ticket";
 
 interface MainProps {
   showModal: boolean;

@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/app/styles/sideBar.module.css";
+import styles from "@/app/styles/layout/sideBar.module.css";
 import { useRouter } from "next/navigation";
 
 export default function sideBar() {

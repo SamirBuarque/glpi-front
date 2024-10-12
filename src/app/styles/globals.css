@@ -6,3 +6,11 @@
   font-family: "Inter", sans-serif;
 }
 
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  height: 70vh;
+}
+

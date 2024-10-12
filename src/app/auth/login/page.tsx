@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import styles from "@/app/styles/login/login.module.css";
 import { useState } from "react";
@@ -6,7 +7,7 @@ interface LoginProps {
   onLogin: (email: string, password: string) => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Login: React.FC<any> = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -19,7 +20,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     }
 
     setError("");
-    onLogin(email, password);
+    //onLogin(email, password);
   };
 
   return (
