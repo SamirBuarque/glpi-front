@@ -21,10 +21,14 @@ export default function DashboardLayout({
     const [showModal, setShowModal] = useState(false);
   
   return (
-    <html>
-      <body>
-        <div>{children}</div>
-      </body>
-    </html>
+    <div>
+      <div className={styles.header}>
+        <Header />
+      </div>
+      <div className={styles.mainLayout}>
+        <SideBar />
+        <div className={styles.mainContent}>{children}</div>
+      </div>
+    </div>
   );
 }

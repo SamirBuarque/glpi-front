@@ -2,9 +2,7 @@
 
 import React from "react";
 import '@/app/styles/globals.css';
-import Login from '@/components/login/login';
-import { useState, ReactNode, ReactElement, Children, cloneElement } from "react";
-import Header from "@/components/layout/header";
+import { ReactNode } from "react";
 import Footer from "@/components/layout/footer";
 
 interface RootLayoutProps {
@@ -12,11 +10,6 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({children}: RootLayoutProps) {
-  //const [showModal, setShowModal] = useState(false);
-
-  const handleModal = () => {
-    //setShowModal(true);
-  }
 
   return (
     <html>

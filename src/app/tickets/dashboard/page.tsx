@@ -7,12 +7,9 @@ import Footer from "@/components/layout/footer";
 
 export default function DashboardPage() {
   return (
-    <>
-      <Header />
-      <div className={styles.mainLayout}>
-        <SideBar />
-        <div className={styles.mainContent}>Main content goes here</div>
-      </div>
-    </>
+    <div>
+      <h1>main content</h1>
+      <p>aqui vai o conteudo principal da pagina</p>
+    </div>
   );
 }
