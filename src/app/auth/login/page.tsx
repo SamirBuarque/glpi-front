@@ -1,26 +1,47 @@
 "use client"
-import React from "react";
+import React, { use } from "react";
 import styles from "@/app/styles/login/login.module.css";
 import { useState } from "react";
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
-interface LoginProps {
-  onLogin: (email: string, password: string) => void;
-}
-
-const Login: React.FC<any> = () => {
+const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!email || !password) {
       setError("Por favor preencha todos os campos");
+      return
     }
 
-    setError("");
-    //onLogin(email, password);
+    try {
+      const response = await axios.post(
+        "http://localhost:5140/v1/identity/login?useCookies=true&useSessionCookies=true",
+        {
+          email,
+          password
+        }
+      )
+      console.log(response)
+      router.push("/tickets/dashboard")
+    } catch (err: any){
+      if (err.response) {
+        setError("Erro ao efetuar login")
+      } else if (err.request) {
+        setError("Erro de rede. Tente novamente")
+      } else {
+        setError(`Erro desconhecido: ${err}`)
+      }
+      console.log("erro ao enviar os dados.", err)
+      console.log(`Email: ${email} Senha: ${password}`)
+    }
+    
+
   };
 
   return (
