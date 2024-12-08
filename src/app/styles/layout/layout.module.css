@@ -1,16 +1,4 @@
-.mainLayout {
-    display: flex;
-    flex-direction: row;
-}
-
-.mainContent {
-    flex-grow: 1;
-    margin: 20px;
-    min-height: 85vh;
-
-}
-
-.header {
-    background-color: red;
-    
+.content {
+    margin-top: 60px;
+    padding: 16px;
 }

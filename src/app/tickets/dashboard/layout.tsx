@@ -1,33 +1,17 @@
-"use client";
-
-import React from "react";
-import "@/app/styles/globals.css";
-import styles from "@/app/styles/layout/layout.module.css";
+import { ReactNode } from "react";
 import Header from "@/components/layout/header";
-import Footer from "@/components/layout/footer";
-import SideBar from "@/components/layout/sideBar";
-import Main from "@/components/layout/main";
-import { useState, ReactNode, ReactElement, Children, cloneElement } from "react";
+import styles from '@/app/styles/layout/layout.module.css'
 
-interface RootLayoutProps {
+interface DashboardLayoutProps {
   children: ReactNode;
 }
 
-export default function DashboardLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
-    const [showModal, setShowModal] = useState(false);
-  
+export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <div>
-      <div className={styles.header}>
-        <Header />
-      </div>
-      <div className={styles.mainLayout}>
-        <SideBar />
-        <div className={styles.mainContent}>{children}</div>
+      <Header />
+      <div className={styles.content}>
+        {children}
       </div>
     </div>
   );
