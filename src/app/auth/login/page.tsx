@@ -21,7 +21,7 @@ const Login: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5140/v1/identity/login?useCookies=true&useSessionCookies=true",
+        "http://localhost:5140/v1/identity/login?useCookies=true",
         {
           email,
           password

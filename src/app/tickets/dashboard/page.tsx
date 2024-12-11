@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styles from '@/app/styles/tickets/ticket.module.css'
+import formatDate from '@/utils/formatDate'
 
 const DashboardPage: React.FC = () => {
   const [tickets, setTickets] = useState<any[]>([]);
@@ -26,12 +28,28 @@ const DashboardPage: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
+      <div className={styles.topContent}>
+        <h2>Todos os chamados</h2>
+        <h2>Input de busca</h2>
+      </div>
+
+      <div className={styles.ticketLabels}>
+        <span>ID</span>
+        <span>Título</span>
+        <span>Autor</span>
+        <span>Criado em</span>
+        <span>Departamento</span>
+      </div>
+      
       {tickets.length > 0 ? (
         tickets.map((ticket) => (
-          <div key={ticket.id}>
-            <h3>{ticket.title}</h3>
-            <p>{ticket.description}</p>
+          <div key={ticket.id} className={styles.ticket}>
+            <span className={styles.ticket_ID}>{ticket.id}</span>
+            <span className={styles.ticket_title}>{ticket.title}</span>
+            <span className={styles.ticket_userID}>{ticket.userId}</span>
+            <span className={styles.ticket_createdAt}>{formatDate(ticket.createdAt)}</span>
+            <span className={styles.ticket_departament}>{ticket.departmentToExecute}</span>
           </div>
         ))
       ) : (

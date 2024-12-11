@@ -1,0 +1,61 @@
+.container {
+    padding: 0;
+    margin: 0;
+    width: 80vw;
+    height: 60vh;
+}
+
+.topContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.ticket, .ticketLabels {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ticket {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.ticketLabels span, .ticket span {
+    flex: 1;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 10px;
+}
+
+.ticketLabels span:nth-child(1), .ticket span:nth-child(1){
+    flex-basis: 7%;
+}
+
+.ticketLabels span:nth-child(2), .ticket span:nth-child(2){
+    flex-basis: 30%;
+}
+
+.ticketLabels span:nth-child(3), .ticket span:nth-child(3){
+    flex-basis: 20%;
+}
+
+.ticketLabels span:nth-child(4), .ticket span:nth-child(4){
+    flex-basis: 20%;
+}
+
+.ticketLabels span:nth-child(5), .ticket span:nth-child(5){
+    flex-basis: 20%;
+}
