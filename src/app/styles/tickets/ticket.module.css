@@ -59,3 +59,9 @@
 .ticketLabels span:nth-child(5), .ticket span:nth-child(5){
     flex-basis: 20%;
 }
+
+.ticket_ID {
+    text-decoration: none;
+    cursor: pointer;
+    color: #007bff;
+}

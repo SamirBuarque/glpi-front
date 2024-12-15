@@ -1,11 +1,12 @@
-import React from 'react';
-import styles from '@/app/styles/layout/footer.module.css';
+import React from "react";
+import styles from "@/app/styles/layout/footer.module.css";
 
 export default function Footer() {
-    return(
-        <footer className={styles.footer}>
-            <p>&copy; 2024 GLPI</p>
-            <p>Desenvolvido por Wizarion e Katochi</p>
-        </footer>
-    );
+    const currentYear = new Date().getFullYear()
+  return (
+      <footer className={styles.footer}>
+        <p>&copy; {currentYear} GLPI - Ticketing System</p>
+        <p>Desenvolvido por Wizarion e Katochi</p>
+      </footer>
+  );
 }

@@ -1,18 +1,28 @@
 .loginContainer {
-    max-width: 400px;
+    width: 350px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #f4f4f4;
+  }
+
+  .titleWrapper {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
   }
   
   .loginForm {
     display: flex;
     flex-direction: column;
+
   }
   
   .formGroup {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 15px;
   }
   .label {
@@ -40,8 +50,29 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
+    display: block;
+    margin: 10px;
+    width: 30%;
+
   }
   
   .loginButton:hover {
     background-color: #005bb5;
   }
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.helperLinksWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.helperLinkText {
+  text-decoration: none;
+  color: #005bb5;
+  cursor: pointer;
+}

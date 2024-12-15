@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from '@/app/styles/tickets/ticket.module.css'
 import formatDate from '@/utils/formatDate'
+import Link from 'next/link';
 
 const DashboardPage: React.FC = () => {
   const [tickets, setTickets] = useState<any[]>([]);
@@ -45,7 +46,7 @@ const DashboardPage: React.FC = () => {
       {tickets.length > 0 ? (
         tickets.map((ticket) => (
           <div key={ticket.id} className={styles.ticket}>
-            <span className={styles.ticket_ID}>{ticket.id}</span>
+            <Link href={`/tickets/details/${ticket.id}`} className={styles.ticket_ID}>{ticket.id}</Link>
             <span className={styles.ticket_title}>{ticket.title}</span>
             <span className={styles.ticket_userID}>{ticket.userId}</span>
             <span className={styles.ticket_createdAt}>{formatDate(ticket.createdAt)}</span>

@@ -4,6 +4,7 @@ import styles from "@/app/styles/login/login.module.css";
 import { useState } from "react";
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -25,7 +26,8 @@ const Login: React.FC = () => {
         {
           email,
           password
-        }
+        },
+        { withCredentials: true }
       )
       console.log(response)
       router.push("/tickets/dashboard")
@@ -46,7 +48,9 @@ const Login: React.FC = () => {
 
   return (
     <div className={styles.loginContainer}>
+      <div className={styles.titleWrapper}>
       <h2>Login</h2>
+      </div>
       <form onSubmit={handleSubmit} className={styles.loginForm}>
         <div className={styles.formGroup}>
           <label className={styles.label} htmlFor="email">Email:</label>
@@ -66,12 +70,29 @@ const Login: React.FC = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Digite sua senha"
             required
           />
           {error && <p className={styles.error}>{error}</p>}
-          <button type="submit" className={styles.loginButton}>
+        </div>
+        <div className={styles.buttonWrapper}>
+        <button type="submit" className={styles.loginButton}>
             Entrar
           </button>
+        </div>
+        <div className={styles.helperLinksWrapper}>
+          <Link 
+          href="/auth/forgot-password"
+          className={styles.helperLinkText}
+          >
+            Esqueci minha senha
+          </Link>
+          <Link
+          href="/auth/register"
+          className={styles.helperLinkText}
+          >
+            Não tem cadastro?
+          </Link>
         </div>
       </form>
     </div>

@@ -1,15 +1,47 @@
 "use client";
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styles from "@/app/styles/layout/header.module.css";
 import Link from "next/link";
-
-interface HeaderProps {
-  showModal: boolean;
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import axios from 'axios'
+import CreateTicketModal from "../tickets/CreateTicketModal";
 
 const Header = () => {
+  const [username, setUsername] = useState("")
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const getUsername = async () => {
+    try {
+      const response = await axios.get("http://localhost:5140/v1/identity/manage/info",
+        {
+          withCredentials: true
+        }
+      );
+      console.log("buscando o nome do usuario")
+      console.log(response)
+      setUsername(response.data.email)
+    } catch(error) {
+      console.log("Erro ao buscar o nome do usuario.", error)
+    }
+  }
+
+  useEffect(() => {
+    getUsername();
+  }, [])
+
+  const handleSaveTicket = async (ticketData: {title: string, department: string, description: string, status: Number}) => {
+    try{
+      console.log("Ticket salvo.", ticketData)
+      const response2 = await axios.post("http://localhost:5140/v1/tickets", 
+        ticketData,
+        { withCredentials: true }
+      )
+      console.log("Enviando ticket para o backend", response2)
+    } catch(error) {
+      console.log("Erro ao salvar o ticket", error)
+    }
+  }
+
   return (
     <header className={styles.header}>
       <div className="logo-header">
@@ -25,7 +57,7 @@ const Header = () => {
             <button
               className={styles.adicionar_chamado_button}
               onClick={() => {
-                console.log("adicionar chamado");
+                setIsModalOpen(true)
               }}
             >
               Adicionar chamado
@@ -60,10 +92,17 @@ const Header = () => {
                 height={30}
               />
             </Link>
-            <span className={styles.username_icon}>Samir Buarque</span>
+            <span className={styles.username_icon}>
+              {username}
+            </span>
           </li>
         </ul>
       </nav>
+      <CreateTicketModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSave={handleSaveTicket}
+      />
     </header>
   );
 };
