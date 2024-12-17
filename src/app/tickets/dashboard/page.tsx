@@ -1,32 +1,30 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
-import styles from '@/app/styles/tickets/ticket.module.css'
-import formatDate from '@/utils/formatDate'
-import Link from 'next/link';
+import styles from "@/app/styles/tickets/ticket.module.css";
+import { TicketList } from "@/components/tickets/TicketList";
+import { cookies } from "next/headers";
 
-const DashboardPage: React.FC = () => {
-  const [tickets, setTickets] = useState<any[]>([]);
-
-  const renderTickets = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:5140/v1/tickets?pageNumber=1&pageSize=25",
-        {
-          withCredentials: true,
+const DashboardPage: React.FC = async () => {
+  let tickets = [];
+  // capturando a porra do cookie
+  const cookieStore = cookies();
+  const cookieHeader = cookieStore.get(
+    ".AspNetCore.Identity.Application"
+  )?.value;
+  try {
+    const response = await axios.get(
+      "http://localhost:5140/v1/tickets?pageNumber=1&pageSize=25",
+      {
+        withCredentials: true,
+        headers: {
+          Cookie: `.AspNetCore.Identity.Application=${cookieHeader}`,
         }
-      );
-      console.log("tentando exibir a response:");
-      console.log(response);
-      setTickets(response.data.data);
-    } catch (error) {
-      console.log("erro ao realizar o GET.", error);
-    }
-  };
-
-  useEffect(() => {
-    renderTickets();
-  }, []);
+      }
+    );
+    tickets = response.data.data;
+  } catch (error) {
+    console.log("erro ao realizar o GET.", error);
+  }
 
   return (
     <div className={styles.container}>
@@ -42,20 +40,8 @@ const DashboardPage: React.FC = () => {
         <span>Criado em</span>
         <span>Departamento</span>
       </div>
-      
-      {tickets.length > 0 ? (
-        tickets.map((ticket) => (
-          <div key={ticket.id} className={styles.ticket}>
-            <Link href={`/tickets/details/${ticket.id}`} className={styles.ticket_ID}>{ticket.id}</Link>
-            <span className={styles.ticket_title}>{ticket.title}</span>
-            <span className={styles.ticket_userID}>{ticket.userId}</span>
-            <span className={styles.ticket_createdAt}>{formatDate(ticket.createdAt)}</span>
-            <span className={styles.ticket_departament}>{ticket.departmentToExecute}</span>
-          </div>
-        ))
-      ) : (
-        <p>Nenhum ticket encontrado</p>
-      )}
+
+      <TicketList initialTickets={tickets} />
     </div>
   );
 };
