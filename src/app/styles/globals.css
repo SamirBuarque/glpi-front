@@ -6,11 +6,25 @@
   font-family: "Inter", sans-serif;
 }
 
-main {
+body {
   display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1;
   justify-content: center;
   align-items: center;
   padding: 50px;
-  height: 70vh;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}

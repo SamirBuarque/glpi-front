@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import axios from "axios";
 import styles from "@/app/styles/tickets/ticket.module.css";
 import { TicketList } from "@/components/tickets/TicketList";
@@ -18,7 +18,7 @@ const DashboardPage: React.FC = async () => {
         withCredentials: true,
         headers: {
           Cookie: `.AspNetCore.Identity.Application=${cookieHeader}`,
-        }
+        },
       }
     );
     tickets = response.data.data;
@@ -41,7 +41,9 @@ const DashboardPage: React.FC = async () => {
         <span>Departamento</span>
       </div>
 
-      <TicketList initialTickets={tickets} />
+      <Suspense fallback={<p>Carregando tickets...</p>}>
+        <TicketList initialTickets={tickets} />
+      </Suspense>
     </div>
   );
 };
