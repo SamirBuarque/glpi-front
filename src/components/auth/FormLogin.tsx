@@ -44,51 +44,66 @@ export const FormLogin = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className={styles.loginForm}>
-        <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="email">
-            Email:
-          </label>
-          <input
-            className={styles.input}
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Digite seu email"
-            required
-          />
+    <div className="container d-flex flex-column justify-content-center align-items-center">
+      <div className="card shadow-lg p-4">
+        <div className="col">
+          <div className="d-flex justify-content-center">
+            <h2>Login</h2>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="form-control"
+                placeholder="Digite seu email"
+                required
+              />
+            </div>
+
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Senha
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-control"
+                placeholder="Digite sua senha"
+                required
+              />
+            </div>
+
+            <div className="d-flex justify-content-center">
+              <button type="submit" className="btn btn-primary">
+                Entrar
+              </button>
+            </div>
+          </form>
         </div>
-        <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="password">
-            Senha:
-          </label>
-          <input
-            className={styles.input}
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Digite sua senha"
-            required
-          />
-          {error && <p className={styles.error}>{error}</p>}
-        </div>
-        <div className={styles.buttonWrapper}>
-          <button type="submit" className={styles.loginButton}>
-            Entrar
-          </button>
-        </div>
-        <div className={styles.helperLinksWrapper}>
-          <Link href="/auth/forgot-password" className={styles.helperLinkText}>
-            Esqueci minha senha
-          </Link>
-          <Link href="/auth/register" className={styles.helperLinkText}>
-            Não tem cadastro?
-          </Link>
-        </div>
-      </form>
+        <div className="row mt-3">
+            <div className="col">
+              <Link
+                href="/auth/forgot-password"
+                className={styles.helperLinkText}
+              >
+                Esqueci minha senha
+              </Link>
+            </div>
+            <div className="col">
+              <Link href="/auth/register" className={styles.helperLinkText}>
+                Não tem cadastro?
+              </Link>
+            </div>
+          </div>
+      </div>
     </div>
   );
 };

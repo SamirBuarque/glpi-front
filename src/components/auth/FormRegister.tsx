@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import styles from "@/app/styles/register/register.module.css";
 
 export const FormRegister = () => {
   const [email, setEmail] = useState("");
@@ -58,7 +57,9 @@ export const FormRegister = () => {
     <div className="container d-flex flex-column justify-content-center align-items-center">
       <div className="row card shadow-lg p-4">
         <div className="col">
+          <div className="d-flex justify-content-center">
           <h2>Crie sua conta</h2>
+          </div>
 
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
@@ -105,9 +106,11 @@ export const FormRegister = () => {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-primary">
-              Registrar
-            </button>
+            <div className="d-flex justify-content-center">
+              <button type="submit" className="btn btn-primary">
+                Registrar
+              </button>
+            </div>
           </form>
         </div>
       </div>
